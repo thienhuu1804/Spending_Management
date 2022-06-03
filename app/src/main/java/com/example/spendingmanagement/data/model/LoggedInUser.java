@@ -5,17 +5,17 @@ package com.example.spendingmanagement.data.model;
  */
 public class LoggedInUser {
 
-    private String userId;
+    private String id;
     private String displayName;
     private String password;
 
-    public LoggedInUser(String userId, String displayName) {
-        this.userId = userId;
+    public LoggedInUser(String id, String displayName) {
+        this.id = id;
         this.displayName = displayName;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
     public String getDisplayName() {
