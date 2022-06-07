@@ -25,15 +25,24 @@ import android.widget.Toast;
 import com.example.spendingmanagement.R;
 import com.example.spendingmanagement.ui.login.LoginViewModel;
 import com.example.spendingmanagement.ui.login.LoginViewModelFactory;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_login);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "abc");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "def");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
