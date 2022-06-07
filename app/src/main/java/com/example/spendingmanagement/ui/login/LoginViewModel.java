@@ -8,7 +8,7 @@ import android.util.Patterns;
 
 import com.example.spendingmanagement.data.LoginRepository;
 import com.example.spendingmanagement.data.Result;
-import com.example.spendingmanagement.data.model.LoggedInUser;
+import com.example.spendingmanagement.data.model.Account;
 import com.example.spendingmanagement.R;
 
 public class LoginViewModel extends ViewModel {
@@ -31,10 +31,10 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+        Result<Account> result = loginRepository.login(username, password);
 
         if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+            Account data = ((Result.Success<Account>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
